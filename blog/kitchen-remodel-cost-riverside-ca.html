@@ -239,5 +239,6 @@
   document.querySelectorAll('#navLinks a').forEach(function(a){a.addEventListener('click',function(){var t=this.parentElement.classList.contains('nav-dropdown');if(!t){document.getElementById('navLinks').classList.remove('open');document.querySelectorAll('.nav-dropdown').forEach(function(d){d.classList.remove('open')})}})});
   document.querySelectorAll('.nav-dropdown > a').forEach(function(l){l.addEventListener('click',function(e){if(window.innerWidth<=640){e.preventDefault();this.parentElement.classList.toggle('open')}})});
 </script>
+<script src="../chatbot.js"></script>
 </body>
 </html>
