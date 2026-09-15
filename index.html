@@ -205,8 +205,8 @@
 
     .hero-badge {
       display: inline-block;
-      background: var(--gold);
-      color: var(--black);
+      background: transparent;
+      color: rgba(255,255,255,0.75);
       font-family: 'Oswald', sans-serif;
       font-size: 13px;
       font-weight: 600;
@@ -214,6 +214,9 @@
       text-transform: uppercase;
       padding: 6px 20px;
       margin-bottom: 28px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2px;
+      white-space: nowrap;
       animation: fadeDown 0.8s ease 0.2s both;
     }
 
@@ -232,6 +235,30 @@
       animation: fadeUp 0.9s ease 0.4s both;
     }
 
+    .hero-title .static { display: block; }
+    .hero-title .rotating-wrap {
+      display: block;
+      height: 1.05em;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-title .rotating-wrap .word {
+      display: block;
+      color: var(--gold);
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .hero-title .rotating-wrap .word.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-title .rotating-wrap .word.exit {
+      opacity: 0;
+      transform: translateY(-60px);
+    }
     .hero-title span { color: var(--gold); }
 
     @keyframes fadeUp {
@@ -1471,7 +1498,15 @@
   <div class="hero-content">
     <div class="hero-badge">Licensed &amp; Insured · Inland Empire, CA</div>
     <h1 class="hero-title">
-      Building Your<br /><span>Dream Space</span><br />Since 2004
+      <span class="static">Building Your</span>
+      <span class="rotating-wrap">
+        <span class="word active">Dream Space</span>
+        <span class="word">Dream Kitchen</span>
+        <span class="word">Dream Bathroom</span>
+        <span class="word">Dream Home</span>
+        <span class="word">Dream Floors</span>
+      </span>
+      <span class="static">Since 2004</span>
     </h1>
     <p class="hero-subtitle">
       Full-service general contractor serving Riverside, Corona, Moreno Valley &amp; the Inland Empire. Quality craftsmanship, transparent pricing, guaranteed results.
@@ -2298,6 +2333,22 @@
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init({ duration: 700, once: true, offset: 80 });
+
+  // Rotating hero words
+  (function(){
+    var words = document.querySelectorAll('.hero-title .word');
+    if(!words.length) return;
+    var current = 0;
+    setInterval(function(){
+      words[current].classList.add('exit');
+      words[current].classList.remove('active');
+      setTimeout(function(){
+        words[current].classList.remove('exit');
+        current = (current + 1) % words.length;
+        words[current].classList.add('active');
+      }, 560);
+    }, 2800);
+  })();
 
   // Navbar scroll
   const navbar = document.getElementById('navbar');
