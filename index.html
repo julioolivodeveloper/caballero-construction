@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caballero Construction Inc | Licensed & Insured | Inland Empire, CA</title>
+  <meta name="description" content="Licensed and insured general contractor serving Riverside, Corona, Moreno Valley, Jurupa Valley & Fontana. Kitchen remodeling, bathroom remodeling, drywall, flooring, roofing and more." />
+  <meta name="keywords" content="general contractor Riverside, kitchen remodeling Riverside, bathroom remodeling Riverside, handyman Riverside, contractor Inland Empire, Caballero Construction" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #C41E3A;
+      --red-dark: #960018;
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --black: #111111;
+      --dark: #1a1a1a;
+      --gray: #2a2a2a;
+      --light-gray: #f5f5f5;
+      --text: #333333;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; }
+
+    /* ─── NAVBAR ─── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s ease;
+      background: transparent;
+    }
+
+    #navbar.scrolled {
+      background: var(--black);
+      padding: 10px 40px;
+      box-shadow: 0 2px 30px rgba(0,0,0,0.4);
+    }
+
+    .nav-logo img {
+      height: 60px;
+      transition: height 0.4s ease;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    }
+
+    #navbar.scrolled .nav-logo img { height: 46px; }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 10px 24px !important;
+      border-radius: 3px;
+      font-weight: 600 !important;
+      transition: background 0.3s ease !important;
+    }
+
+    .nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px; height: 2px;
+      background: white;
+      transition: all 0.3s;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/project-3.jpg') center/cover no-repeat;
+      transform: scale(1.08);
+      animation: heroZoom 12s ease-in-out infinite alternate;
+      opacity: 0.35;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to   { transform: scale(1.15); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(196,30,58,0.25) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--white);
+      padding: 40px 20px;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      margin-bottom: 28px;
+      animation: fadeDown 0.8s ease 0.2s both;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(48px, 8vw, 90px);
+      font-weight: 700;
+      line-height: 1.0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: fadeUp 0.9s ease 0.4s both;
+    }
+
+    .hero-title span { color: var(--gold); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-subtitle {
+      margin-top: 20px;
+      font-size: clamp(16px, 2.5vw, 20px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      animation: fadeUp 0.9s ease 0.6s both;
+    }
+
+    .hero-ctas {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s ease 0.8s both;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      padding: 16px 36px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,30,58,0.5); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 16px 36px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .hero-scroll svg { width: 24px; height: 24px; }
+
+    /* ─── TRUST BAR ─── */
+    #trust-bar {
+      background: var(--black);
+      border-top: 3px solid var(--red);
+      border-bottom: 3px solid var(--gold);
+      padding: 0;
+    }
+
+    .trust-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 28px;
+      color: var(--white);
+      border-right: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+
+    .trust-item:last-child { border-right: none; }
+    .trust-item:hover { background: rgba(196,30,58,0.15); }
+
+    .trust-icon {
+      width: 44px; height: 44px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .trust-icon svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 2; }
+
+    .trust-text strong {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+    }
+
+    .trust-text span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 100px 20px; }
+
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 32px; height: 2px;
+      background: var(--red);
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--black);
+      line-height: 1.1;
+    }
+
+    .section-title span { color: var(--red); }
+
+    .section-subtitle {
+      margin-top: 16px;
+      font-size: 17px;
+      color: #666;
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--light-gray); }
+
+    .services-header { text-align: center; margin-bottom: 64px; }
+    .services-header .section-label { justify-content: center; }
+    .services-header .section-label::before { display: none; }
+    .services-header .section-subtitle { margin-left: auto; margin-right: auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 36px 28px;
+      border-radius: 4px;
+      border-bottom: 3px solid transparent;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      transition: all 0.35s ease;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+      border-bottom-color: var(--red);
+    }
+
+    .service-icon-wrap {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-icon-wrap { transform: rotate(5deg) scale(1.1); }
+
+    .service-icon-wrap svg {
+      width: 30px; height: 30px;
+      stroke: white; fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      color: var(--black);
+    }
+
+    .service-card p {
+      font-size: 14.5px;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    /* ─── STATS ─── */
+    #stats {
+      background: var(--black);
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #stats::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold), var(--red));
+    }
+
+    .stats-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      gap: 40px;
+    }
+
+    .stat-item { color: var(--white); }
+
+    .stat-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(48px, 6vw, 72px);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-suffix { color: var(--red); }
+
+    .stat-label {
+      margin-top: 8px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ─── PORTFOLIO ─── */
+    #portfolio { background: var(--white); }
+
+    .portfolio-header { margin-bottom: 56px; }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--black);
+    }
+
+    .portfolio-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .portfolio-item:nth-child(6) { grid-column: span 2; }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, opacity 0.4s ease;
+      min-height: 220px;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.08);
+      opacity: 0.7;
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+    .portfolio-overlay span {
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    /* Lightbox */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #lightbox.active { display: flex; }
+    #lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border: 2px solid var(--gold); }
+
+    .lb-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      color: white;
+      font-size: 36px;
+      cursor: pointer;
+      font-weight: 300;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .lb-close:hover { color: var(--gold); }
+
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      font-size: 28px;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .lb-nav:hover { background: var(--red); }
+    .lb-prev { left: 20px; }
+    .lb-next { right: 20px; }
+
+    /* ─── WHY US ─── */
+    #why-us {
+      background: linear-gradient(135deg, var(--black) 0%, #1e1e1e 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #why-us::after {
+      content: 'CC';
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Oswald', sans-serif;
+      font-size: 400px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.02);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-content .section-title { color: white; }
+    .why-content .section-title span { color: var(--gold); }
+    .why-content .section-subtitle { color: rgba(255,255,255,0.65); }
+
+    .why-points {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .why-point {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .why-check {
+      width: 28px; height: 28px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .why-check svg { width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 3; }
+
+    .why-point h4 {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .why-point p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    .why-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .why-images img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 2px solid rgba(201,168,76,0.3);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .why-images img:hover { border-color: var(--gold); transform: scale(1.02); }
+    .why-images img:first-child { grid-row: span 2; aspect-ratio: auto; height: 100%; }
+
+    /* ─── REVIEWS ─── */
+    #reviews { background: var(--light-gray); overflow: hidden; }
+
+    .reviews-header { text-align: center; margin-bottom: 56px; }
+    .reviews-header .section-label { justify-content: center; }
+    .reviews-header .section-label::before { display: none; }
+
+    .reviews-rating-summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .rating-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    .rating-stars { color: #FFA500; font-size: 24px; letter-spacing: 3px; }
+    .rating-count { font-size: 14px; color: #888; margin-top: 4px; }
+
+    .reviews-track-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .reviews-track-wrap::before,
+    .reviews-track-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .reviews-track-wrap::before { left: 0; background: linear-gradient(to right, var(--light-gray), transparent); }
+    .reviews-track-wrap::after { right: 0; background: linear-gradient(to left, var(--light-gray), transparent); }
+
+    .reviews-track {
+      display: flex;
+      gap: 24px;
+      animation: scrollReviews 32s linear infinite;
+      width: max-content;
+    }
+
+    .reviews-track:hover { animation-play-state: paused; }
+
+    @keyframes scrollReviews {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .review-card {
+      background: white;
+      border-radius: 8px;
+      padding: 28px;
+      width: 340px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      border-top: 3px solid var(--red);
+      position: relative;
+    }
+
+    .review-quote {
+      position: absolute;
+      top: 16px; right: 20px;
+      font-size: 60px;
+      color: rgba(196,30,58,0.08);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .review-stars { color: #FFA500; font-size: 16px; letter-spacing: 2px; margin-bottom: 14px; }
+
+    .review-text {
+      font-size: 14.5px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 16px;
+    }
+
+    .review-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .review-platform {
+      font-size: 12px;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    /* ─── SERVICE AREAS ─── */
+    #areas {
+      background: white;
+      padding: 100px 20px;
+    }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .areas-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .area-tag {
+      background: var(--light-gray);
+      border-left: 4px solid var(--red);
+      padding: 12px 16px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--black);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .area-tag:hover {
+      background: var(--red);
+      color: white;
+      transform: translateX(4px);
+    }
+
+    .areas-map {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .areas-map iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      display: block;
+    }
+
+    /* ─── CTA SECTION ─── */
+    #cta {
+      background: var(--red);
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(0,0,0,0.04) 20px,
+        rgba(0,0,0,0.04) 40px
+      );
+    }
+
+    .cta-content { position: relative; z-index: 1; }
+
+    .cta-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700;
+      color: white;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .cta-title span { color: var(--gold); }
+
+    .cta-sub {
+      margin-top: 16px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.85);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-actions {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--red);
+      padding: 18px 40px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border-radius: 3px;
+    }
+
+    .btn-white:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      padding: 18px 40px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.6);
+      transition: all 0.3s ease;
+      border-radius: 3px;
+    }
+
+    .btn-outline-white:hover {
+      border-color: white;
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0a0a0a;
+      color: rgba(255,255,255,0.7);
+      padding: 70px 20px 30px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand img {
+      height: 70px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      max-width: 260px;
+    }
+
+    .footer-contact {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-contact a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .footer-contact a:hover { color: white; }
+    .footer-contact svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+
+    .footer-col h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: white;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--red);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s, padding-left 0.2s;
+      display: block;
+    }
+
+    .footer-links a:hover { color: var(--gold); padding-left: 6px; }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 28px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+    /* ─── FLOATING CTA ─── */
+    .float-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .float-btn {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .float-btn:hover { transform: scale(1.12); box-shadow: 0 8px 28px rgba(0,0,0,0.4); }
+
+    .float-btn svg { width: 26px; height: 26px; stroke: white; fill: none; stroke-width: 2; }
+
+    .float-btn.phone { background: var(--red); }
+    .float-btn.whatsapp { background: #25D366; }
+
+    .float-tooltip {
+      position: absolute;
+      right: 68px;
+      background: var(--black);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .float-btn:hover .float-tooltip { opacity: 1; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .trust-inner { grid-template-columns: 1fr 1fr; }
+      .trust-item:nth-child(2) { border-right: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-item:nth-child(1) { grid-column: span 2; }
+      .portfolio-item:nth-child(6) { grid-column: span 1; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-images { order: -1; }
+      .areas-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      #navbar { padding: 14px 20px; }
+      .nav-links { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.97); justify-content: center; align-items: center; gap: 36px; z-index: 999; }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 24px; }
+      .hamburger { display: flex; position: relative; z-index: 1000; }
+      .trust-inner { grid-template-columns: 1fr 1fr; }
+      .trust-item { padding: 16px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-item:nth-child(1) { grid-column: span 2; }
+      .areas-list { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="images/logo.png" alt="Caballero Construction Inc" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Our Work</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#contact" class="nav-cta">Free Estimate</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Licensed &amp; Insured · Inland Empire, CA</div>
+    <h1 class="hero-title">
+      Building Your<br /><span>Dream Space</span><br />Since 2004
+    </h1>
+    <p class="hero-subtitle">
+      Full-service general contractor serving Riverside, Corona, Moreno Valley &amp; the Inland Empire. Quality craftsmanship, transparent pricing, guaranteed results.
+    </p>
+    <div class="hero-ctas">
+      <a href="tel:5623946813" class="btn-primary">
+        <svg style="width:18px;height:18px;stroke:white;fill:none;stroke-width:2.5;vertical-align:middle;margin-right:8px" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        Call (562) 394-6813
+      </a>
+      <a href="#portfolio" class="btn-outline">View Our Work</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Scroll
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item" data-aos="fade-up" data-aos-delay="0">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>
+      </div>
+      <div class="trust-text">
+        <strong>Licensed & Insured</strong>
+        <span>State of California Certified</span>
+      </div>
+    </div>
+    <div class="trust-item" data-aos="fade-up" data-aos-delay="100">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+      </div>
+      <div class="trust-text">
+        <strong>20+ Years Experience</strong>
+        <span>Trusted Since 2004</span>
+      </div>
+    </div>
+    <div class="trust-item" data-aos="fade-up" data-aos-delay="200">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+      </div>
+      <div class="trust-text">
+        <strong>Free Estimates</strong>
+        <span>No Hidden Fees</span>
+      </div>
+    </div>
+    <div class="trust-item" data-aos="fade-up" data-aos-delay="300">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="trust-text">
+        <strong>5-Star Rated</strong>
+        <span>100+ Happy Clients</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header" data-aos="fade-up">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Full-Service <span>Construction</span></h2>
+      <p class="section-subtitle">From complete remodels to quick repairs — we handle every aspect of your home or commercial project with precision and professionalism.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <h3>Kitchen Remodeling</h3>
+        <p>Complete kitchen transformations including cabinets, countertops, islands, plumbing, and electrical. We bring your dream kitchen to life.</p>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M5 12H3a2 2 0 00-2 2v4a2 2 0 002 2h18a2 2 0 002-2v-4a2 2 0 00-2-2h-2M9 5l3-3 3 3M12 2v10"/><rect x="7" y="12" width="10" height="8"/></svg>
+        </div>
+        <h3>Bathroom Remodeling</h3>
+        <p>Luxury bathroom upgrades — shower installations, vanities, tile work, flooring, and fixtures that exceed your expectations every time.</p>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="1"/><path d="M2 9h20M9 3v18"/></svg>
+        </div>
+        <h3>Drywall & Framing</h3>
+        <p>Professional drywall installation, repair, and texturing. Wall framing for additions and room modifications built to code.</p>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="180">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg>
+        </div>
+        <h3>Flooring</h3>
+        <p>Hardwood, laminate, LVT, tile, and vinyl. We install and finish all types of flooring with expert precision and lasting results.</p>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Plumbing</h3>
+        <p>Installations, repairs, and replacements. Garbage disposals, faucets, water heaters, pipes — licensed plumbing work done right.</p>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Electrical Work</h3>
+        <p>Panel upgrades, outlet installation, lighting fixtures, ceiling fans, and code-compliant electrical work for residential and commercial.</p>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="360">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 10s8 12 8 12 8-8 8-12S16 2 12 2z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Roofing</h3>
+        <p>Roof repair, replacement, and inspection services. We protect your home with quality materials and expert installation.</p>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="420">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+        </div>
+        <h3>Painting</h3>
+        <p>Interior and exterior painting with premium paints. Clean, precise work that transforms any space with the perfect finish.</p>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="480">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m10 0h3a2 2 0 002-2v-3"/></svg>
+        </div>
+        <h3>Doors & Windows</h3>
+        <p>Installation and replacement of interior and exterior doors, windows, frames, and hardware. Energy-efficient upgrades available.</p>
+      </div>
+
+      <div class="service-card" data-aos="fade-up" data-aos-delay="540">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <h3>Concrete & Masonry</h3>
+        <p>Driveways, patios, walkways, retaining walls, and foundation work. Durable concrete solutions for indoor and outdoor projects.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item" data-aos="fade-up">
+      <div class="stat-number"><span class="count" data-target="20">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Years in Business</div>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+      <div class="stat-number"><span class="count" data-target="500">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+      <div class="stat-number"><span class="count" data-target="5">0</span><span class="stat-suffix">★</span></div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+      <div class="stat-number"><span class="count" data-target="6">0</span></div>
+      <div class="stat-label">Cities Served</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="portfolio-header" data-aos="fade-up">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">Real Projects, <span>Real Results</span></h2>
+      <p class="section-subtitle">Every project is completed with the same level of care and attention to detail — whether it's a small repair or a complete renovation.</p>
+    </div>
+    <div class="portfolio-grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="portfolio-item" onclick="openLightbox(0)">
+        <img src="images/project-3.jpg" alt="Hardwood Flooring Installation" loading="lazy" />
+        <div class="portfolio-overlay"><span>Hardwood Flooring</span></div>
+      </div>
+      <div class="portfolio-item" onclick="openLightbox(1)">
+        <img src="images/project-1.jpg" alt="Tile Floor & Bathroom Vanity" loading="lazy" />
+        <div class="portfolio-overlay"><span>Tile & Flooring</span></div>
+      </div>
+      <div class="portfolio-item" onclick="openLightbox(2)">
+        <img src="images/project-2.jpg" alt="Bathroom Vanity Installation" loading="lazy" />
+        <div class="portfolio-overlay"><span>Bathroom Remodel</span></div>
+      </div>
+      <div class="portfolio-item" onclick="openLightbox(3)">
+        <img src="images/project-16.jpg" alt="Drywall & Room Finishing" loading="lazy" />
+        <div class="portfolio-overlay"><span>Drywall Finishing</span></div>
+      </div>
+      <div class="portfolio-item" onclick="openLightbox(4)">
+        <img src="images/project-14.jpg" alt="Wall Framing" loading="lazy" />
+        <div class="portfolio-overlay"><span>Framing & Demo</span></div>
+      </div>
+      <div class="portfolio-item" onclick="openLightbox(5)">
+        <img src="images/project-5.jpg" alt="Garage Door Painting" loading="lazy" />
+        <div class="portfolio-overlay"><span>Painting</span></div>
+      </div>
+      <div class="portfolio-item" onclick="openLightbox(6)">
+        <img src="images/project-6.jpg" alt="Kitchen Cabinets" loading="lazy" />
+        <div class="portfolio-overlay"><span>Kitchen Work</span></div>
+      </div>
+      <div class="portfolio-item" onclick="openLightbox(7)">
+        <img src="images/project-7.jpg" alt="Interior Remodel" loading="lazy" />
+        <div class="portfolio-overlay"><span>Interior Remodel</span></div>
+      </div>
+      <div class="portfolio-item" onclick="openLightbox(8)">
+        <img src="images/project-8.jpg" alt="Home Renovation" loading="lazy" />
+        <div class="portfolio-overlay"><span>Renovation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <span class="lb-close" onclick="closeLightbox()">&#215;</span>
+  <button class="lb-nav lb-prev" onclick="changeSlide(-1)">&#8249;</button>
+  <img id="lbImg" src="" alt="Project" />
+  <button class="lb-nav lb-next" onclick="changeSlide(1)">&#8250;</button>
+</div>
+
+<!-- WHY US -->
+<section id="why-us">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-content" data-aos="fade-right">
+        <div class="section-label">Why Caballero?</div>
+        <h2 class="section-title">The <span>Standard</span><br/>We Set</h2>
+        <p class="section-subtitle">We've built our reputation one project at a time. Here's what makes us different from every other contractor in the Inland Empire.</p>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></div>
+            <div>
+              <h4>Same-Day Response</h4>
+              <p>We answer calls 7 days a week and respond to inquiries fast — because your time matters.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></div>
+            <div>
+              <h4>Transparent Pricing</h4>
+              <p>No surprise charges. We provide detailed, honest estimates before any work begins.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></div>
+            <div>
+              <h4>Clean Job Sites</h4>
+              <p>We respect your home — our crews work clean and leave your space better than we found it.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg></div>
+            <div>
+              <h4>Work Guaranteed</h4>
+              <p>We stand behind every project. If something isn't right, we make it right — period.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-images" data-aos="fade-left">
+        <img src="images/project-3.jpg" alt="Flooring installation" />
+        <img src="images/project-2.jpg" alt="Bathroom vanity" />
+        <img src="images/project-16.jpg" alt="Drywall work" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-header" data-aos="fade-up">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title">What Our <span>Clients</span> Say</h2>
+      <div class="reviews-rating-summary">
+        <div class="rating-number">5.0</div>
+        <div>
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-count">Based on Google Reviews · Inland Empire, CA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-track-wrap" data-aos="fade-up" data-aos-delay="100">
+    <div class="reviews-track" id="reviewsTrack">
+
+      <!-- REVIEW 1 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Caballero Construction handyman did an installation in my business of exit signs, required by the fire department, and they were great and passed the inspection. Also he installed TVs in my lobby and they look great!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#C41E3A,#960018)">A</div>
+          <div>
+            <div class="review-name">Aaron Aaron</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 2 months ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW 2 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Wow, these guys are great! First time I hired them Enrique came out and put in a garbage disposal at the lowest price I could find and he was super thorough and friendly and knowledgeable. So I hired them again!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#2196F3,#1565C0)">C</div>
+          <div>
+            <div class="review-name">Charles Osterday</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google Local Guide · 8 months ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW 3 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Enrique is the best! He is very detailed and his work shows it. He has done so many miscellaneous projects in our house, all with great attention to detail. Very easy to work with and knowledgeable."</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#9C27B0,#6A1B9A)">L</div>
+          <div>
+            <div class="review-name">Livi Dela Victoria</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 1 year ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW 4 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Enrique and his partner have done several big jobs at my house and they have not once disappointed. From plumbing to electrical — attentive to detail, communicative, clean, and fast. Highly recommend!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#4CAF50,#2E7D32)">B</div>
+          <div>
+            <div class="review-name">Braulio Gonzalez</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 2 years ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW 5 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Rick has been our handyman and has done an excellent job with all our projects, especially our bathroom renovations. He designed a special shower seat for the master bathroom which exceeded our expectations. We love our bathrooms!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#FF9800,#E65100)">C</div>
+          <div>
+            <div class="review-name">Cynthia Brown</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 2 years ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW 6 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Awesome help when Home Depot wouldn't. Quick, friendly, and genuine. Exactly the kind of contractor you want — shows up, gets the job done, no drama."</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#00BCD4,#006064)">K</div>
+          <div>
+            <div class="review-name">Kelsey Ward</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 1 month ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW 7 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Enrique is amazing — came out same day and gave me an awesome price and repaired it to perfection! You're gonna get all my handyman business from now on. Couldn't be happier with the results!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#795548,#3E2723)">A</div>
+          <div>
+            <div class="review-name">Ahmad Alassadi</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 3 years ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW 8 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I called on a Sunday, he said he'd be available the next morning and showed up as promised. Quick, efficient, professional. He assessed the situation and fixed our toilet. We will definitely be using him in the future!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#F44336,#B71C1C)">J</div>
+          <div>
+            <div class="review-name">Jesse Vargas</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google Local Guide · 3 years ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW 9 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Awesome service. The handyman was so professional. He fixed my doors right away and didn't take advantage of my lack of experience. He gave me a reasonable price. THANK YOU!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#607D8B,#263238)">W</div>
+          <div>
+            <div class="review-name">Wendy Dickson</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google Local Guide · 3 years ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW 10 -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our office needed a handyman to fix some doors and signs. The assistant was very polite and scheduled us right away. They came quickly and the work was done perfectly. Highly professional team!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#009688,#004D40)">A</div>
+          <div>
+            <div class="review-name">Affordable Documents</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 7 years ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DUPLICATES FOR INFINITE SCROLL -->
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Caballero Construction handyman did an installation in my business of exit signs, required by the fire department, and they were great and passed the inspection. Also he installed TVs in my lobby and they look great!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#C41E3A,#960018)">A</div>
+          <div>
+            <div class="review-name">Aaron Aaron</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 2 months ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Wow, these guys are great! First time I hired them Enrique came out and put in a garbage disposal at the lowest price I could find and he was super thorough and friendly and knowledgeable. So I hired them again!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#2196F3,#1565C0)">C</div>
+          <div>
+            <div class="review-name">Charles Osterday</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google Local Guide · 8 months ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Enrique is the best! He is very detailed and his work shows it. Very easy to work with and knowledgeable. He has done so many miscellaneous projects in our house with great attention to detail."</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#9C27B0,#6A1B9A)">L</div>
+          <div>
+            <div class="review-name">Livi Dela Victoria</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 1 year ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Enrique and his partner have done several big jobs and they have not once disappointed. From plumbing to electrical — they are attentive to detail, communicative, clean, and fast. Never disappoint!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#4CAF50,#2E7D32)">B</div>
+          <div>
+            <div class="review-name">Braulio Gonzalez</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google · 2 years ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Awesome service. The handyman was so professional. He fixed my doors right away and didn't take advantage of my lack of experience. He gave me a reasonable price. THANK YOU!"</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#607D8B,#263238)">W</div>
+          <div>
+            <div class="review-name">Wendy Dickson</div>
+            <div class="review-platform">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#4285F4;fill:none;stroke-width:2"><circle cx="12" cy="12" r="10"/></svg>
+              Google Local Guide · 3 years ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section id="areas">
+  <div class="areas-grid">
+    <div data-aos="fade-right">
+      <div class="section-label">Where We Work</div>
+      <h2 class="section-title">Serving the <span>Inland Empire</span></h2>
+      <p class="section-subtitle">Based in Riverside, CA — we serve homeowners and businesses across the Inland Empire with the same level of quality and commitment.</p>
+      <div class="areas-list">
+        <div class="area-tag">Riverside</div>
+        <div class="area-tag">Jurupa Valley</div>
+        <div class="area-tag">Corona</div>
+        <div class="area-tag">Moreno Valley</div>
+        <div class="area-tag">Fontana</div>
+        <div class="area-tag">Ontario</div>
+        <div class="area-tag">Rancho Cucamonga</div>
+        <div class="area-tag">San Bernardino</div>
+      </div>
+    </div>
+    <div class="areas-map" data-aos="fade-left">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d211784.5073944836!2d-117.59844!3d33.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcb0b5f442f975%3A0xef0dcfc6863fe29!2sCaballeros%20Handyman%20Services!5e0!3m2!1sen!2sus!4v1700000000000"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Caballero Construction location">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" style="padding:0">
+  <div id="cta">
+    <div class="cta-content" data-aos="zoom-in">
+      <h2 class="cta-title">Ready to Start<br/><span>Your Project?</span></h2>
+      <p class="cta-sub">Get a free, no-obligation estimate. We respond fast — usually same day.</p>
+      <div class="cta-actions">
+        <a href="tel:5623946813" class="btn-white">
+          📞 Call (562) 394-6813
+        </a>
+        <a href="https://wa.me/15623946813?text=Hi!%20I%27d%20like%20a%20free%20estimate%20from%20Caballero%20Construction." class="btn-outline-white" target="_blank">
+          💬 WhatsApp Us
+        </a>
+      </div>
+      <p style="margin-top:28px;font-size:14px;color:rgba(255,255,255,0.6)">
+        📧 cabalero80@gmail.com &nbsp;·&nbsp; 📍 Riverside, CA 92509 &nbsp;·&nbsp; Mon–Sat 8AM–5PM
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Caballero Construction Inc" />
+      <p>Licensed and insured general contractor serving the Inland Empire since 2004. Quality work, honest pricing, guaranteed satisfaction.</p>
+      <div class="footer-contact">
+        <a href="tel:5623946813">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          (562) 394-6813
+        </a>
+        <a href="mailto:cabalero80@gmail.com">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          cabalero80@gmail.com
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Kitchen Remodeling</a></li>
+        <li><a href="#services">Bathroom Remodeling</a></li>
+        <li><a href="#services">Drywall & Framing</a></li>
+        <li><a href="#services">Flooring</a></li>
+        <li><a href="#services">Plumbing</a></li>
+        <li><a href="#services">Electrical</a></li>
+        <li><a href="#services">Roofing</a></li>
+        <li><a href="#services">Painting</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Areas</h4>
+      <ul class="footer-links">
+        <li><a href="#areas">Riverside, CA</a></li>
+        <li><a href="#areas">Jurupa Valley, CA</a></li>
+        <li><a href="#areas">Corona, CA</a></li>
+        <li><a href="#areas">Moreno Valley, CA</a></li>
+        <li><a href="#areas">Fontana, CA</a></li>
+        <li><a href="#areas">Ontario, CA</a></li>
+        <li><a href="#areas">Rancho Cucamonga</a></li>
+        <li><a href="#areas">San Bernardino</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="#hero">About Us</a></li>
+        <li><a href="#portfolio">Our Work</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Free Estimate</a></li>
+        <li><a href="https://maps.app.goo.gl/ct1dtKA8wijHqyYr6" target="_blank">Google Maps</a></li>
+      </ul>
+      <div style="margin-top:24px">
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase">Hours</p>
+        <p style="font-size:14px;color:rgba(255,255,255,0.5)">Mon – Sat<br/>8:00 AM – 5:00 PM</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Caballero Construction Inc · Riverside, CA · All Rights Reserved</span>
+    <span>Licensed &amp; Insured · Serving Inland Empire Since 2004</span>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="float-cta">
+  <a href="tel:5623946813" class="float-btn phone">
+    <div class="float-tooltip">Call Us Now</div>
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+  </a>
+  <a href="https://wa.me/15623946813?text=Hi!%20I%27d%20like%20a%20free%20estimate%20from%20Caballero%20Construction." class="float-btn whatsapp" target="_blank">
+    <div class="float-tooltip">WhatsApp</div>
+    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  </a>
+</div>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, once: true, offset: 80 });
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // Counter animation
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current);
+    }, 16);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.count').forEach(animateCount);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsSection = document.getElementById('stats');
+  if (statsSection) observer.observe(statsSection);
+
+  // Lightbox
+  const portfolioImages = [
+    'images/project-3.jpg',
+    'images/project-1.jpg',
+    'images/project-2.jpg',
+    'images/project-16.jpg',
+    'images/project-14.jpg',
+    'images/project-5.jpg',
+    'images/project-6.jpg',
+    'images/project-7.jpg',
+    'images/project-8.jpg',
+  ];
+
+  let currentSlide = 0;
+
+  function openLightbox(idx) {
+    currentSlide = idx;
+    document.getElementById('lbImg').src = portfolioImages[idx];
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function changeSlide(dir) {
+    currentSlide = (currentSlide + dir + portfolioImages.length) % portfolioImages.length;
+    document.getElementById('lbImg').src = portfolioImages[currentSlide];
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') changeSlide(1);
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+  });
+</script>
+</body>
+</html>
