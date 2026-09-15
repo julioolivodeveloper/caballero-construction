@@ -155,7 +155,7 @@ section { padding:100px 20px; }
   grid-template-columns: 1fr 1fr;
   z-index: 1100;
 }
-.nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+.nav-dropdown:hover .dropdown-menu, .nav-dropdown.open .dropdown-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
 .dropdown-menu a {
   display: block;
   padding: 9px 20px;
