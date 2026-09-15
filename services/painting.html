@@ -11,7 +11,27 @@
 <body>
 <nav id="navbar">
   <a href="../index.html" class="nav-logo"><img src="../images/logo.png" alt="Caballero Construction" /></a>
-  <ul class="nav-links" id="navLinks"><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#portfolio">Our Work</a></li><li><a href="../index.html#reviews">Reviews</a></li><li><a href="../index.html#areas">Areas</a></li><li><a href="../index.html#contact" class="nav-cta">Free Estimate</a></li></ul>
+  <ul class="nav-links" id="navLinks">
+    <li class="nav-dropdown">
+      <a href="../index.html#services">Services <svg class="dropdown-arrow" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg></a>
+      <div class="dropdown-menu">
+        <a href="kitchen-remodeling.html">Kitchen Remodeling</a>
+        <a href="bathroom-remodeling.html">Bathroom Remodeling</a>
+        <a href="flooring.html">Flooring</a>
+        <a href="drywall-framing.html">Drywall &amp; Framing</a>
+        <a href="painting.html">Painting</a>
+        <a href="roofing.html">Roofing</a>
+        <a href="plumbing.html">Plumbing</a>
+        <a href="electrical.html">Electrical Work</a>
+        <a href="doors-windows.html">Doors &amp; Windows</a>
+        <a href="concrete-masonry.html">Concrete &amp; Masonry</a>
+      </div>
+    </li>
+    <li><a href="../portafolio.html">Our Work</a></li>
+    <li><a href="../index.html#reviews">Reviews</a></li>
+    <li><a href="../index.html#areas">Areas</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Free Estimate</a></li>
+  </ul>
   <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <section class="svc-hero" style="background-image:url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=1600&q=80')">
@@ -81,5 +101,5 @@
 <footer class="svc-footer"><div class="footer-inner"><img src="../images/logo.png" alt="Caballero Construction Inc" /><p>© 2024 Caballero Construction Inc · Riverside, CA · Licensed &amp; Insured</p><a href="../index.html">← Back to Home</a></div></footer>
 <div class="float-cta"><a href="tel:5623946813" class="float-btn phone"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg></a><a href="https://wa.me/15623946813" class="float-btn whatsapp" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a></div>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({duration:700,once:true,offset:80});const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));</script>
+<script>AOS.init({duration:700,once:true,offset:80});const navbar=document.getElementById("navbar");window.addEventListener("scroll",()=>navbar.classList.toggle("scrolled",window.scrollY>60));function toggleMenu(){var nl=document.getElementById("navLinks");nl.classList.toggle("open");if(!nl.classList.contains("open"))document.querySelectorAll(".nav-dropdown").forEach(d=>d.classList.remove("open"));}document.querySelectorAll("#navLinks a").forEach(function(a){a.addEventListener("click",function(){var isDropdownTrigger=this.parentElement.classList.contains("nav-dropdown");if(!isDropdownTrigger){document.getElementById("navLinks").classList.remove("open");document.querySelectorAll(".nav-dropdown").forEach(d=>d.classList.remove("open"));}});});document.querySelectorAll(".nav-dropdown > a").forEach(function(link){link.addEventListener("click",function(e){if(window.innerWidth<=640){e.preventDefault();this.parentElement.classList.toggle("open");}});});</script>
 </body></html>
