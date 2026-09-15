@@ -512,49 +512,58 @@
 
     .portfolio-header { margin-bottom: 56px; }
 
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: auto;
-      gap: 12px;
+    /* ─── CAROUSEL ─── */
+    .carousel-wrap {
+      position: relative;
     }
 
-    .portfolio-item {
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: 6px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 calc(33.333% - 12px);
+      margin-right: 16px;
       position: relative;
       overflow: hidden;
       cursor: pointer;
       background: var(--black);
+      border-radius: 6px;
     }
 
-    .portfolio-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-    .portfolio-item:nth-child(6) { grid-column: span 2; }
-
-    .portfolio-item img {
+    .carousel-slide img {
       width: 100%;
-      height: 100%;
+      height: 340px;
       object-fit: cover;
       display: block;
       transition: transform 0.5s ease, opacity 0.4s ease;
-      min-height: 220px;
     }
 
-    .portfolio-item:hover img {
-      transform: scale(1.08);
-      opacity: 0.7;
+    .carousel-slide:hover img {
+      transform: scale(1.06);
+      opacity: 0.75;
     }
 
     .portfolio-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 55%);
       opacity: 0;
       transition: opacity 0.4s ease;
       display: flex;
       align-items: flex-end;
       padding: 20px;
+      border-radius: 6px;
     }
 
-    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .carousel-slide:hover .portfolio-overlay { opacity: 1; }
 
     .portfolio-overlay span {
       color: white;
@@ -564,6 +573,66 @@
       letter-spacing: 1px;
       padding-bottom: 4px;
       border-bottom: 2px solid var(--gold);
+    }
+
+    /* Arrow buttons */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: var(--red);
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .carousel-btn:hover { background: var(--red-dark); transform: translateY(-50%) scale(1.1); }
+    .carousel-btn.prev { left: -26px; }
+    .carousel-btn.next { right: -26px; }
+    .carousel-btn svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 2.5; }
+
+    /* Dots */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .carousel-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--red);
+      transform: scale(1.3);
+    }
+
+    @media (max-width: 900px) {
+      .carousel-slide { flex: 0 0 calc(50% - 10px); }
+      .carousel-slide img { height: 260px; }
+    }
+
+    @media (max-width: 560px) {
+      .carousel-slide { flex: 0 0 calc(100% - 4px); margin-right: 8px; }
+      .carousel-slide img { height: 240px; }
+      .carousel-btn.prev { left: -10px; }
+      .carousel-btn.next { right: -10px; }
     }
 
     /* Lightbox */
@@ -1121,9 +1190,6 @@
       .trust-inner { grid-template-columns: 1fr 1fr; }
       .trust-item:nth-child(2) { border-right: none; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-      .portfolio-item:nth-child(1) { grid-column: span 2; }
-      .portfolio-item:nth-child(6) { grid-column: span 1; }
       .why-grid { grid-template-columns: 1fr; }
       .why-images { order: -1; }
       .areas-grid { grid-template-columns: 1fr; }
@@ -1140,8 +1206,6 @@
       .trust-item { padding: 16px; }
       .services-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .portfolio-grid { grid-template-columns: 1fr 1fr; }
-      .portfolio-item:nth-child(1) { grid-column: span 2; }
       .areas-list { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
@@ -1359,43 +1423,66 @@
       <h2 class="section-title">Real Projects, <span>Real Results</span></h2>
       <p class="section-subtitle">Every project is completed with the same level of care and attention to detail — whether it's a small repair or a complete renovation.</p>
     </div>
-    <div class="portfolio-grid" data-aos="fade-up" data-aos-delay="100">
-      <div class="portfolio-item" onclick="openLightbox(0)">
-        <img src="images/project-3.jpg" alt="Hardwood Flooring Installation" loading="lazy" />
-        <div class="portfolio-overlay"><span>Hardwood Flooring</span></div>
+    <div class="carousel-wrap" data-aos="fade-up" data-aos-delay="100">
+      <button class="carousel-btn prev" id="carPrev" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carTrack">
+          <div class="carousel-slide" onclick="openLightbox(0)">
+            <img src="images/project-3.jpg" alt="Hardwood Flooring" loading="lazy" />
+            <div class="portfolio-overlay"><span>Hardwood Flooring</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(1)">
+            <img src="images/project-1.jpg" alt="Tile & Flooring" loading="lazy" />
+            <div class="portfolio-overlay"><span>Tile & Flooring</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(2)">
+            <img src="images/project-2.jpg" alt="Bathroom Remodel" loading="lazy" />
+            <div class="portfolio-overlay"><span>Bathroom Remodel</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(3)">
+            <img src="images/project-16.jpg" alt="Drywall Finishing" loading="lazy" />
+            <div class="portfolio-overlay"><span>Drywall Finishing</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(4)">
+            <img src="images/project-14.jpg" alt="Framing & Demo" loading="lazy" />
+            <div class="portfolio-overlay"><span>Framing & Demo</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(5)">
+            <img src="images/project-5.jpg" alt="Painting" loading="lazy" />
+            <div class="portfolio-overlay"><span>Painting</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(6)">
+            <img src="images/project-6.jpg" alt="Kitchen Work" loading="lazy" />
+            <div class="portfolio-overlay"><span>Kitchen Work</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(7)">
+            <img src="images/project-9.jpg" alt="Interior Remodel" loading="lazy" />
+            <div class="portfolio-overlay"><span>Interior Remodel</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(8)">
+            <img src="images/project-10.jpg" alt="Renovation" loading="lazy" />
+            <div class="portfolio-overlay"><span>Renovation</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(9)">
+            <img src="images/project-11.jpg" alt="Concrete Work" loading="lazy" />
+            <div class="portfolio-overlay"><span>Concrete Work</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(10)">
+            <img src="images/project-12.jpg" alt="Exterior Work" loading="lazy" />
+            <div class="portfolio-overlay"><span>Exterior Work</span></div>
+          </div>
+          <div class="carousel-slide" onclick="openLightbox(11)">
+            <img src="images/project-13.jpg" alt="Home Improvement" loading="lazy" />
+            <div class="portfolio-overlay"><span>Home Improvement</span></div>
+          </div>
+        </div>
       </div>
-      <div class="portfolio-item" onclick="openLightbox(1)">
-        <img src="images/project-1.jpg" alt="Tile Floor & Bathroom Vanity" loading="lazy" />
-        <div class="portfolio-overlay"><span>Tile & Flooring</span></div>
-      </div>
-      <div class="portfolio-item" onclick="openLightbox(2)">
-        <img src="images/project-2.jpg" alt="Bathroom Vanity Installation" loading="lazy" />
-        <div class="portfolio-overlay"><span>Bathroom Remodel</span></div>
-      </div>
-      <div class="portfolio-item" onclick="openLightbox(3)">
-        <img src="images/project-16.jpg" alt="Drywall & Room Finishing" loading="lazy" />
-        <div class="portfolio-overlay"><span>Drywall Finishing</span></div>
-      </div>
-      <div class="portfolio-item" onclick="openLightbox(4)">
-        <img src="images/project-14.jpg" alt="Wall Framing" loading="lazy" />
-        <div class="portfolio-overlay"><span>Framing & Demo</span></div>
-      </div>
-      <div class="portfolio-item" onclick="openLightbox(5)">
-        <img src="images/project-5.jpg" alt="Garage Door Painting" loading="lazy" />
-        <div class="portfolio-overlay"><span>Painting</span></div>
-      </div>
-      <div class="portfolio-item" onclick="openLightbox(6)">
-        <img src="images/project-6.jpg" alt="Kitchen Cabinets" loading="lazy" />
-        <div class="portfolio-overlay"><span>Kitchen Work</span></div>
-      </div>
-      <div class="portfolio-item" onclick="openLightbox(7)">
-        <img src="images/project-7.jpg" alt="Interior Remodel" loading="lazy" />
-        <div class="portfolio-overlay"><span>Interior Remodel</span></div>
-      </div>
-      <div class="portfolio-item" onclick="openLightbox(8)">
-        <img src="images/project-8.jpg" alt="Home Renovation" loading="lazy" />
-        <div class="portfolio-overlay"><span>Renovation</span></div>
-      </div>
+      <button class="carousel-btn next" id="carNext" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+      </button>
+      <div class="carousel-dots" id="carDots"></div>
     </div>
   </div>
 </section>
@@ -1904,7 +1991,7 @@
   const statsSection = document.getElementById('stats');
   if (statsSection) observer.observe(statsSection);
 
-  // Lightbox
+  // ─── PORTFOLIO CAROUSEL ───
   const portfolioImages = [
     'images/project-3.jpg',
     'images/project-1.jpg',
@@ -1913,10 +2000,83 @@
     'images/project-14.jpg',
     'images/project-5.jpg',
     'images/project-6.jpg',
-    'images/project-7.jpg',
-    'images/project-8.jpg',
+    'images/project-9.jpg',
+    'images/project-10.jpg',
+    'images/project-11.jpg',
+    'images/project-12.jpg',
+    'images/project-13.jpg',
   ];
 
+  const track     = document.getElementById('carTrack');
+  const dotsWrap  = document.getElementById('carDots');
+  const slides    = track ? track.querySelectorAll('.carousel-slide') : [];
+  const total     = slides.length;
+  let carIdx      = 0;
+  let autoTimer   = null;
+
+  function getSlidesVisible() {
+    if (window.innerWidth <= 560) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 3;
+  }
+
+  function getMaxIndex() {
+    return Math.max(0, total - getSlidesVisible());
+  }
+
+  function getSlideWidth() {
+    if (!slides[0]) return 0;
+    return slides[0].getBoundingClientRect().width + 16;
+  }
+
+  function moveTo(idx) {
+    const max = getMaxIndex();
+    carIdx = Math.max(0, Math.min(idx, max));
+    track.style.transform = `translateX(-${carIdx * getSlideWidth()}px)`;
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === carIdx);
+    });
+  }
+
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    const max = getMaxIndex();
+    for (let i = 0; i <= max; i++) {
+      const d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', `Slide ${i + 1}`);
+      d.addEventListener('click', () => { moveTo(i); resetAuto(); });
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => {
+      moveTo(carIdx >= getMaxIndex() ? 0 : carIdx + 1);
+    }, 4000);
+  }
+
+  if (track) {
+    buildDots();
+    resetAuto();
+
+    document.getElementById('carPrev').addEventListener('click', () => { moveTo(carIdx - 1); resetAuto(); });
+    document.getElementById('carNext').addEventListener('click', () => { moveTo(carIdx + 1); resetAuto(); });
+
+    window.addEventListener('resize', () => { buildDots(); moveTo(Math.min(carIdx, getMaxIndex())); });
+
+    // Touch/swipe
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) { moveTo(diff > 0 ? carIdx + 1 : carIdx - 1); resetAuto(); }
+    });
+  }
+
+  // ─── LIGHTBOX ───
   let currentSlide = 0;
 
   function openLightbox(idx) {
