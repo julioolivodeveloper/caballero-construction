@@ -3,7 +3,7 @@
   var css = `
     :root{--cb-red:#C41E3A;--cb-gold:#C9A84C;--cb-black:#111111;--cb-dark:#1a1a1a;--cb-white:#ffffff}
     #cb-launcher{
-      position:fixed;bottom:28px;left:24px;z-index:9998;
+      position:fixed;bottom:28px;right:24px;z-index:9998;
       width:58px;height:58px;border-radius:50%;
       background:var(--cb-red);border:none;cursor:pointer;
       box-shadow:0 4px 20px rgba(196,30,58,0.5);
@@ -27,14 +27,14 @@
     #cb-badge.cb-hidden{display:none}
     @keyframes cb-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
     #cb-window{
-      position:fixed;bottom:100px;left:24px;z-index:9997;
+      position:fixed;bottom:100px;right:24px;z-index:9997;
       width:360px;height:530px;border-radius:16px;
       background:#fff;box-shadow:0 20px 60px rgba(0,0,0,0.22);
       display:flex;flex-direction:column;overflow:hidden;
       transform:scale(0.85) translateY(20px);opacity:0;
       pointer-events:none;
       transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.25s ease;
-      transform-origin:bottom left;
+      transform-origin:bottom right;
       font-family:'Inter',sans-serif;
     }
     #cb-window.cb-visible{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
@@ -124,7 +124,7 @@
     /* MOBILE */
     @media(max-width:480px){
       #cb-window{left:0;right:0;bottom:0;width:100%;height:75vh;border-radius:20px 20px 0 0;transform-origin:bottom center}
-      #cb-launcher{left:16px;bottom:90px}
+      #cb-launcher{right:16px;bottom:24px}
     }
   `;
   var s = document.createElement('style');
