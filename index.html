@@ -236,29 +236,16 @@
     }
 
     .hero-title .static { display: block; }
-    .hero-title .rotating-wrap {
-      display: block;
-      height: 1.05em;
-      overflow: hidden;
-      position: relative;
-    }
-    .hero-title .rotating-wrap .word {
-      display: block;
+    .hero-title .rotating-wrap { display: block; }
+    #typewriter { color: var(--gold); }
+    .tw-cursor {
+      display: inline-block;
       color: var(--gold);
-      position: absolute;
-      width: 100%;
-      opacity: 0;
-      transform: translateY(60px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      font-weight: 300;
+      margin-left: 2px;
+      animation: twBlink 0.65s step-end infinite;
     }
-    .hero-title .rotating-wrap .word.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .hero-title .rotating-wrap .word.exit {
-      opacity: 0;
-      transform: translateY(-60px);
-    }
+    @keyframes twBlink { 0%,100%{opacity:1} 50%{opacity:0} }
     .hero-title span { color: var(--gold); }
 
     @keyframes fadeUp {
@@ -1452,13 +1439,7 @@
     <div class="hero-badge">Licensed &amp; Insured · Inland Empire, CA</div>
     <h1 class="hero-title">
       <span class="static">Building Your</span>
-      <span class="rotating-wrap">
-        <span class="word active">Dream Space</span>
-        <span class="word">Dream Kitchen</span>
-        <span class="word">Dream Bathroom</span>
-        <span class="word">Dream Home</span>
-        <span class="word">Dream Floors</span>
-      </span>
+      <span class="rotating-wrap"><span id="typewriter"></span><span class="tw-cursor">|</span></span>
       <span class="static">Since 2004</span>
     </h1>
     <p class="hero-subtitle">
@@ -2279,20 +2260,27 @@
 <script>
   AOS.init({ duration: 700, once: true, offset: 80 });
 
-  // Rotating hero words
+  // Typewriter hero
   (function(){
-    var words = document.querySelectorAll('.hero-title .word');
-    if(!words.length) return;
-    var current = 0;
-    setInterval(function(){
-      words[current].classList.add('exit');
-      words[current].classList.remove('active');
-      setTimeout(function(){
-        words[current].classList.remove('exit');
-        current = (current + 1) % words.length;
-        words[current].classList.add('active');
-      }, 560);
-    }, 2800);
+    var el = document.getElementById('typewriter');
+    if(!el) return;
+    var words = ['Dream Space','Dream Kitchen','Dream Bathroom','Dream Home','Dream Floors'];
+    var wi = 0, ci = 0, deleting = false;
+    function tick(){
+      var word = words[wi];
+      if(!deleting){
+        el.textContent = word.slice(0, ci + 1);
+        ci++;
+        if(ci === word.length){ deleting = true; setTimeout(tick, 1800); return; }
+        setTimeout(tick, 85);
+      } else {
+        el.textContent = word.slice(0, ci - 1);
+        ci--;
+        if(ci === 0){ deleting = false; wi = (wi + 1) % words.length; setTimeout(tick, 380); return; }
+        setTimeout(tick, 42);
+      }
+    }
+    setTimeout(tick, 900);
   })();
 
   // Navbar scroll
