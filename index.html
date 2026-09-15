@@ -462,6 +462,182 @@
       line-height: 1.65;
     }
 
+    .service-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--red);
+      transition: letter-spacing 0.3s;
+    }
+
+    .service-card:hover .service-link { letter-spacing: 2px; }
+
+    /* ─── FEATURED PROJECTS ─── */
+    #featured-projects { background: var(--black); padding: 100px 20px; }
+
+    #featured-projects .section-label { color: var(--gold); }
+    #featured-projects .section-label::before { background: var(--gold); }
+    #featured-projects .section-title { color: var(--white); }
+    #featured-projects .section-title span { color: var(--gold); }
+    #featured-projects .section-subtitle { color: rgba(255,255,255,0.6); }
+
+    .fp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .fp-card {
+      background: #1a1a1a;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .fp-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+
+    .fp-img-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 260px;
+    }
+
+    .fp-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .fp-card:hover .fp-img-wrap img { transform: scale(1.07); }
+
+    .fp-badge {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: var(--red);
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 3px;
+    }
+
+    .fp-number {
+      position: absolute;
+      bottom: 16px; right: 16px;
+      width: 48px; height: 48px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fp-body {
+      padding: 28px;
+    }
+
+    .fp-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .fp-meta svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 2; }
+
+    .fp-body h3 {
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: white;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .fp-body p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .fp-details {
+      display: flex;
+      gap: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 20px;
+    }
+
+    .fp-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .fp-detail-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .fp-detail-value {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      color: var(--gold);
+    }
+
+    .fp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 20px;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+
+    .fp-btn:hover {
+      background: var(--red);
+      border-color: var(--red);
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 900px) {
+      .fp-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    }
+
     /* ─── STATS ─── */
     #stats {
       background: var(--black);
@@ -1309,85 +1485,95 @@
     </div>
     <div class="services-grid">
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+      <a class="service-card" href="services/kitchen-remodeling.html" data-aos="fade-up" data-aos-delay="0" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
         </div>
         <h3>Kitchen Remodeling</h3>
         <p>Complete kitchen transformations including cabinets, countertops, islands, plumbing, and electrical. We bring your dream kitchen to life.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="60">
+      <a class="service-card" href="services/bathroom-remodeling.html" data-aos="fade-up" data-aos-delay="60" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M5 12H3a2 2 0 00-2 2v4a2 2 0 002 2h18a2 2 0 002-2v-4a2 2 0 00-2-2h-2M9 5l3-3 3 3M12 2v10"/><rect x="7" y="12" width="10" height="8"/></svg>
         </div>
         <h3>Bathroom Remodeling</h3>
         <p>Luxury bathroom upgrades — shower installations, vanities, tile work, flooring, and fixtures that exceed your expectations every time.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="120">
+      <a class="service-card" href="services/drywall-framing.html" data-aos="fade-up" data-aos-delay="120" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="1"/><path d="M2 9h20M9 3v18"/></svg>
         </div>
         <h3>Drywall & Framing</h3>
         <p>Professional drywall installation, repair, and texturing. Wall framing for additions and room modifications built to code.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="180">
+      <a class="service-card" href="services/flooring.html" data-aos="fade-up" data-aos-delay="180" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg>
         </div>
         <h3>Flooring</h3>
         <p>Hardwood, laminate, LVT, tile, and vinyl. We install and finish all types of flooring with expert precision and lasting results.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="240">
+      <a class="service-card" href="services/plumbing.html" data-aos="fade-up" data-aos-delay="240" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <h3>Plumbing</h3>
         <p>Installations, repairs, and replacements. Garbage disposals, faucets, water heaters, pipes — licensed plumbing work done right.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+      <a class="service-card" href="services/electrical.html" data-aos="fade-up" data-aos-delay="300" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <h3>Electrical Work</h3>
         <p>Panel upgrades, outlet installation, lighting fixtures, ceiling fans, and code-compliant electrical work for residential and commercial.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="360">
+      <a class="service-card" href="services/roofing.html" data-aos="fade-up" data-aos-delay="360" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 10s8 12 8 12 8-8 8-12S16 2 12 2z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <h3>Roofing</h3>
         <p>Roof repair, replacement, and inspection services. We protect your home with quality materials and expert installation.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="420">
+      <a class="service-card" href="services/painting.html" data-aos="fade-up" data-aos-delay="420" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
         </div>
         <h3>Painting</h3>
         <p>Interior and exterior painting with premium paints. Clean, precise work that transforms any space with the perfect finish.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="480">
+      <a class="service-card" href="services/doors-windows.html" data-aos="fade-up" data-aos-delay="480" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m10 0h3a2 2 0 002-2v-3"/></svg>
         </div>
         <h3>Doors & Windows</h3>
         <p>Installation and replacement of interior and exterior doors, windows, frames, and hardware. Energy-efficient upgrades available.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
-      <div class="service-card" data-aos="fade-up" data-aos-delay="540">
+      <a class="service-card" href="services/concrete-masonry.html" data-aos="fade-up" data-aos-delay="540" style="text-decoration:none;color:inherit;display:block">
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
         </div>
         <h3>Concrete & Masonry</h3>
         <p>Driveways, patios, walkways, retaining walls, and foundation work. Durable concrete solutions for indoor and outdoor projects.</p>
-      </div>
+        <span class="service-link">Learn More →</span>
+      </a>
 
     </div>
   </div>
@@ -1494,6 +1680,116 @@
   <img id="lbImg" src="" alt="Project" />
   <button class="lb-nav lb-next" onclick="changeSlide(1)">&#8250;</button>
 </div>
+
+<!-- FEATURED PROJECTS -->
+<section id="featured-projects">
+  <div class="container">
+    <div data-aos="fade-up">
+      <div class="section-label">Case Studies</div>
+      <h2 class="section-title">Proyectos <span>Destacados</span></h2>
+      <p class="section-subtitle">Tres de nuestros trabajos más representativos — cada uno completado con los más altos estándares de calidad y satisfacción garantizada.</p>
+    </div>
+    <div class="fp-grid">
+
+      <!-- Project 1 -->
+      <div class="fp-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="fp-img-wrap">
+          <img src="images/project-3.jpg" alt="Hardwood floor staircase transformation" />
+          <div class="fp-badge">Flooring</div>
+          <div class="fp-number">01</div>
+        </div>
+        <div class="fp-body">
+          <div class="fp-meta">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Jurupa Valley, CA
+          </div>
+          <h3>Complete Staircase & Hardwood Floor Transformation</h3>
+          <p>Full replacement of worn carpet with premium engineered hardwood throughout the living room, hallway, and staircase. Includes baseboards and stair nosing for a seamless, high-end finish.</p>
+          <div class="fp-details">
+            <div class="fp-detail">
+              <span class="fp-detail-label">Duration</span>
+              <span class="fp-detail-value">4 Days</span>
+            </div>
+            <div class="fp-detail">
+              <span class="fp-detail-label">Service</span>
+              <span class="fp-detail-value">Flooring</span>
+            </div>
+            <div class="fp-detail">
+              <span class="fp-detail-label">Result</span>
+              <span class="fp-detail-value">5★ Review</span>
+            </div>
+          </div>
+          <a href="services/flooring.html" class="fp-btn">View Service →</a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="fp-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="fp-img-wrap">
+          <img src="images/project-2.jpg" alt="Master bathroom vanity remodel" />
+          <div class="fp-badge">Bathroom</div>
+          <div class="fp-number">02</div>
+        </div>
+        <div class="fp-body">
+          <div class="fp-meta">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Riverside, CA
+          </div>
+          <h3>Master Bathroom Marble Vanity Remodel</h3>
+          <p>Complete gut and rebuild of the master bathroom. New custom vanity with Calacatta marble countertop, under-mount sink, updated plumbing, recessed lighting, and full tile work. The client called it "better than expected."</p>
+          <div class="fp-details">
+            <div class="fp-detail">
+              <span class="fp-detail-label">Duration</span>
+              <span class="fp-detail-value">6 Days</span>
+            </div>
+            <div class="fp-detail">
+              <span class="fp-detail-label">Service</span>
+              <span class="fp-detail-value">Bathroom</span>
+            </div>
+            <div class="fp-detail">
+              <span class="fp-detail-label">Result</span>
+              <span class="fp-detail-value">5★ Review</span>
+            </div>
+          </div>
+          <a href="services/bathroom-remodeling.html" class="fp-btn">View Service →</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="fp-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="fp-img-wrap">
+          <img src="images/project-16.jpg" alt="Full room renovation drywall" />
+          <div class="fp-badge">Renovation</div>
+          <div class="fp-number">03</div>
+        </div>
+        <div class="fp-body">
+          <div class="fp-meta">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Corona, CA
+          </div>
+          <h3>Full Room Gut, Framing & Drywall Renovation</h3>
+          <p>Complete demolition and rebuild of a bedroom-to-living space conversion. New framing, insulation, drywall finishing, archway construction, electrical rough-in, and smooth texture paint-ready finish delivered on time and on budget.</p>
+          <div class="fp-details">
+            <div class="fp-detail">
+              <span class="fp-detail-label">Duration</span>
+              <span class="fp-detail-value">8 Days</span>
+            </div>
+            <div class="fp-detail">
+              <span class="fp-detail-label">Service</span>
+              <span class="fp-detail-value">Drywall</span>
+            </div>
+            <div class="fp-detail">
+              <span class="fp-detail-label">Result</span>
+              <span class="fp-detail-value">5★ Review</span>
+            </div>
+          </div>
+          <a href="services/drywall-framing.html" class="fp-btn">View Service →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- WHY US -->
 <section id="why-us">
