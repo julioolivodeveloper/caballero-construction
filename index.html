@@ -2306,8 +2306,14 @@
   // Mobile menu
   function toggleMenu() {
     var nl = document.getElementById('navLinks');
-    nl.classList.toggle('open');
-    if (!nl.classList.contains('open')) document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+    var isOpen = nl.classList.contains('open');
+    if (!isOpen) {
+      nl.classList.add('open');
+      document.body.appendChild(nl);
+    } else {
+      nl.classList.remove('open');
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+    }
   }
 
   // Dropdown: close menu on non-trigger link click
