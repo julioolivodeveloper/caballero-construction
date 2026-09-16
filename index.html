@@ -174,18 +174,26 @@
       background: var(--black);
     }
 
-    .hero-bg {
+    .hero-slide {
       position: absolute;
       inset: 0;
-      background: url('images/project-3.jpg') center/cover no-repeat;
-      transform: scale(1.08);
-      animation: heroZoom 12s ease-in-out infinite alternate;
-      opacity: 0.35;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: heroSlide 30s linear infinite;
     }
+    .hero-slide:nth-child(1){ background-image:url('images/project-6.jpg'); animation-delay:0s; }
+    .hero-slide:nth-child(2){ background-image:url('images/project-2.jpg'); animation-delay:6s; }
+    .hero-slide:nth-child(3){ background-image:url('images/project-3.jpg'); animation-delay:12s; }
+    .hero-slide:nth-child(4){ background-image:url('images/project-5.jpg'); animation-delay:18s; }
+    .hero-slide:nth-child(5){ background-image:url('images/project-1.jpg'); animation-delay:24s; }
 
-    @keyframes heroZoom {
-      from { transform: scale(1.08); }
-      to   { transform: scale(1.15); }
+    @keyframes heroSlide {
+      0%    { opacity:0;    transform:scale(1.06); }
+      4%    { opacity:0.42; }
+      17%   { opacity:0.42; transform:scale(1.13); }
+      21%   { opacity:0;    transform:scale(1.13); }
+      100%  { opacity:0;    transform:scale(1.06); }
     }
 
     .hero-overlay {
@@ -1450,7 +1458,11 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-badge">Licensed &amp; Insured · Inland Empire, CA</div>
