@@ -130,6 +130,7 @@ section { padding:100px 20px; }
   .feature-list { grid-template-columns:1fr; }
   .process-grid { grid-template-columns:1fr; }
   .gallery-grid { grid-template-columns:1fr; }
+  .svc-hero { background-attachment:scroll; background-position:center top; background-size:cover; }
 }
 
 /* ─── DROPDOWN NAV ─── */
