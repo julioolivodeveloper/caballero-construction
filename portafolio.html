@@ -42,15 +42,27 @@
     .dropdown-menu a::after{display:none!important}
 
     /* HERO */
-    .port-hero{min-height:60vh;display:flex;align-items:center;background:url('images/project-6.jpg') center/cover no-repeat;position:relative}
-    .port-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.88) 0%,rgba(196,30,58,0.25) 100%)}
+    .port-hero{min-height:70vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--black)}
+    .port-hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:portHeroSlide 30s linear infinite}
+    .port-hero-slide:nth-child(1){background-image:url('images/project-6.jpg');animation-delay:0s}
+    .port-hero-slide:nth-child(2){background-image:url('images/project-3.jpg');animation-delay:6s}
+    .port-hero-slide:nth-child(3){background-image:url('images/project-2.jpg');animation-delay:12s}
+    .port-hero-slide:nth-child(4){background-image:url('images/project-11.jpg');animation-delay:18s}
+    .port-hero-slide:nth-child(5){background-image:url('images/project-5.jpg');animation-delay:24s}
+    @keyframes portHeroSlide{0%{opacity:0;transform:scale(1.06)}3%{opacity:0.5}20%{opacity:0.5;transform:scale(1.12)}23%{opacity:0;transform:scale(1.12)}100%{opacity:0;transform:scale(1.06)}}
+    .port-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.82) 0%,rgba(196,30,58,0.2) 100%);z-index:1}
     .port-hero-content{position:relative;z-index:2;padding:120px 40px 60px;max-width:800px;color:white}
-    .hero-badge-sm{display:inline-block;background:var(--gold);color:var(--black);font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 18px;margin-bottom:20px}
-    .port-hero-content h1{font-size:clamp(44px,7vw,82px);font-weight:700;text-transform:uppercase;line-height:1.05;margin-bottom:20px}
+    .hero-badge-sm{display:inline-block;background:transparent;color:rgba(255,255,255,0.75);font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;margin-bottom:24px;border:1px solid rgba(255,255,255,0.3);border-radius:2px;animation:phFadeDown 0.8s ease 0.2s both}
+    @keyframes phFadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes phFadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .port-hero-content h1{font-size:clamp(44px,7vw,82px);font-weight:700;text-transform:uppercase;line-height:1.05;margin-bottom:20px;animation:phFadeUp 0.9s ease 0.4s both}
     .port-hero-content h1 span{color:var(--gold)}
-    .port-hero-content p{font-size:17px;color:rgba(255,255,255,0.8);max-width:540px;line-height:1.7;margin-bottom:32px}
-    .btn-primary{background:var(--red);color:white;padding:14px 32px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-block;border-radius:3px;transition:all 0.3s}
+    .port-hero-content p{font-size:17px;color:rgba(255,255,255,0.8);max-width:540px;line-height:1.7;margin-bottom:32px;animation:phFadeUp 0.9s ease 0.6s both}
+    .port-hero-ctas{display:flex;gap:16px;flex-wrap:wrap;animation:phFadeUp 0.9s ease 0.8s both}
+    .btn-primary{background:var(--red);color:white;padding:14px 32px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;border-radius:3px;transition:all 0.3s}
     .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,30,58,0.4)}
+    .btn-outline-hero{background:transparent;color:white;padding:14px 32px;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,0.55);cursor:pointer;border-radius:3px;transition:all 0.3s}
+    .btn-outline-hero:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
     /* STATS */
     .port-stats{background:var(--black);padding:56px 20px}
@@ -327,12 +339,26 @@
 
 <!-- HERO -->
 <section class="port-hero">
+  <div class="port-hero-slide"></div>
+  <div class="port-hero-slide"></div>
+  <div class="port-hero-slide"></div>
+  <div class="port-hero-slide"></div>
+  <div class="port-hero-slide"></div>
   <div class="port-hero-overlay"></div>
-  <div class="port-hero-content" data-aos="fade-up">
+  <div class="port-hero-content">
     <div class="hero-badge-sm">Inland Empire, CA</div>
     <h1>Our Work,<br/><span>Our Pride</span></h1>
     <p>500+ completed projects — kitchens, bathrooms, flooring, drywall, roofing and more. Every job backed by 20+ years of craftsmanship and guaranteed satisfaction.</p>
-    <a href="index.html#contact" class="btn-primary">Get a Free Estimate</a>
+    <div class="port-hero-ctas">
+      <button onclick="openContact()" class="btn-primary" style="font-family:'Oswald',sans-serif">
+        <svg style="width:18px;height:18px;stroke:white;fill:none;stroke-width:2.5;flex-shrink:0" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        Contactar
+      </button>
+      <button onclick="openEstimator()" class="btn-outline-hero" style="font-family:'Oswald',sans-serif">
+        <svg style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5;flex-shrink:0" viewBox="0 0 24 24"><path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3"/><path d="M9 15h3l8.5-8.5a1.5 1.5 0 00-3-3L9 12v3z"/></svg>
+        Calcular Estimado Gratis
+      </button>
+    </div>
   </div>
 </section>
 
