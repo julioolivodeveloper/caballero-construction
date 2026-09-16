@@ -263,7 +263,6 @@
     </li>
     <li><a href="portafolio.html" style="color:var(--gold)">Our Work</a></li>
     <li><a href="blog.html">Blog</a></li>
-    <li><a href="index.html#reviews">Reviews</a></li>
     <li><a href="index.html#areas">Areas</a></li>
     <li><a href="index.html#contact" class="nav-cta">Free Estimate</a></li>
   </ul>
@@ -306,13 +305,6 @@
       <div class="mn-item-left">
         <span class="mn-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
         <span class="mn-label">Blog</span>
-      </div>
-      <svg class="mn-chevron" viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
-    </a>
-    <a href="index.html#reviews" class="mn-item">
-      <div class="mn-item-left">
-        <span class="mn-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span>
-        <span class="mn-label">Reviews</span>
       </div>
       <svg class="mn-chevron" viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
     </a>
@@ -733,7 +725,6 @@
       <a href="index.html">Home</a>
       <a href="index.html#services">Services</a>
       <a href="portafolio.html">Our Work</a>
-      <a href="index.html#reviews">Reviews</a>
       <a href="index.html#contact">Free Estimate</a>
       <a href="https://maps.app.goo.gl/ct1dtKA8wijHqyYr6" target="_blank">Google Maps</a>
     </div>
@@ -751,11 +742,8 @@
   window.addEventListener('scroll',function(){navbar.classList.toggle('scrolled',window.scrollY>60)});
 
   // Mobile menu
-  function toggleMenu(){var d=document.getElementById('mn-drawer'),o=document.getElementById('mn-overlay'),h=document.querySelector('.hamburger'),op=d.classList.contains('mn-open');d.classList.toggle('mn-open',!op);o.classList.toggle('mn-open',!op);if(h)h.classList.toggle('mn-open',!op);document.body.style.overflow=op?'':'hidden';}function mnToggleSub(el){el.classList.toggle('mn-sub-open');var s=el.nextElementSibling;if(s)s.classList.toggle('mn-sub-open');}else{
-      nl.classList.remove('open');
-      document.querySelectorAll('.nav-dropdown').forEach(function(d){d.classList.remove('open')});
-    }
-  }
+  function toggleMenu(){var d=document.getElementById('mn-drawer'),o=document.getElementById('mn-overlay'),h=document.querySelector('.hamburger'),op=d.classList.contains('mn-open');d.classList.toggle('mn-open',!op);o.classList.toggle('mn-open',!op);if(h)h.classList.toggle('mn-open',!op);document.body.style.overflow=op?'':'hidden';}
+  function mnToggleSub(el){el.classList.toggle('mn-sub-open');var s=el.nextElementSibling;if(s)s.classList.toggle('mn-sub-open');}
   document.querySelectorAll('#navLinks a').forEach(function(a){
     a.addEventListener('click',function(){
       var isDropdownTrigger=this.parentElement.classList.contains('nav-dropdown');
