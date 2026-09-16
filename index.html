@@ -180,19 +180,22 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      animation: heroSlide 30s linear infinite;
+      animation: heroSlide 48s linear infinite;
     }
-    .hero-slide:nth-child(1){ background-image:url('images/svc-kitchen.jpg'); animation-delay:0s; }
-    .hero-slide:nth-child(2){ background-image:url('images/svc-bathroom.jpg'); animation-delay:6s; }
-    .hero-slide:nth-child(3){ background-image:url('images/svc-flooring.jpg'); animation-delay:12s; }
-    .hero-slide:nth-child(4){ background-image:url('images/svc-painting.jpg'); animation-delay:18s; }
-    .hero-slide:nth-child(5){ background-image:url('images/project-1.jpg'); animation-delay:24s; }
+    .hero-slide:nth-child(1){ background-image:url('images/hero-1.jpg'); animation-delay:0s; }
+    .hero-slide:nth-child(2){ background-image:url('images/hero-2.jpg'); animation-delay:6s; }
+    .hero-slide:nth-child(3){ background-image:url('images/hero-3.jpg'); animation-delay:12s; }
+    .hero-slide:nth-child(4){ background-image:url('images/hero-4.jpg'); animation-delay:18s; }
+    .hero-slide:nth-child(5){ background-image:url('images/hero-5.jpg'); animation-delay:24s; }
+    .hero-slide:nth-child(6){ background-image:url('images/hero-6.jpg'); animation-delay:30s; }
+    .hero-slide:nth-child(7){ background-image:url('images/hero-7.jpg'); animation-delay:36s; }
+    .hero-slide:nth-child(8){ background-image:url('images/hero-8.jpg'); animation-delay:42s; }
 
     @keyframes heroSlide {
       0%    { opacity:0;    transform:scale(1.06); }
-      4%    { opacity:0.42; }
-      17%   { opacity:0.42; transform:scale(1.13); }
-      21%   { opacity:0;    transform:scale(1.13); }
+      3%    { opacity:0.5; }
+      11%   { opacity:0.5;  transform:scale(1.12); }
+      14%   { opacity:0;    transform:scale(1.12); }
       100%  { opacity:0;    transform:scale(1.06); }
     }
 
@@ -1458,6 +1461,9 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
   <div class="hero-slide"></div>
   <div class="hero-slide"></div>
   <div class="hero-slide"></div>
