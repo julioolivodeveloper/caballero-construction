@@ -13,6 +13,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="blog-style.css" />
+<style>
+/* ── MOBILE DRAWER ─────────────────────────────────────── */
+#mn-overlay{position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.65);opacity:0;pointer-events:none;transition:opacity 0.3s}
+#mn-overlay.mn-open{opacity:1;pointer-events:all}
+#mn-drawer{position:fixed;top:0;right:0;bottom:0;width:min(360px,92vw);background:#111;z-index:9999;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;overflow:hidden;font-family:'Inter',sans-serif;box-shadow:-8px 0 40px rgba(0,0,0,0.6)}
+#mn-drawer.mn-open{transform:translateX(0)}
+.mn-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.07);flex-shrink:0;background:#0c0c0c}
+.mn-logo{height:40px;filter:drop-shadow(0 1px 8px rgba(0,0,0,0.6))}
+.mn-close{width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.1);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.45);transition:all 0.2s}
+.mn-close:hover{background:rgba(255,255,255,0.07);color:white;border-color:rgba(255,255,255,0.18)}
+.mn-nav{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.mn-nav::-webkit-scrollbar{width:3px}
+.mn-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:2px}
+.mn-item{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;color:white;text-decoration:none;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.05);transition:background 0.18s;-webkit-tap-highlight-color:transparent;background:none;width:100%;box-sizing:border-box}
+.mn-item:hover,.mn-item:active{background:rgba(255,255,255,0.04)}
+.mn-item-left{display:flex;align-items:center;gap:13px}
+.mn-label{font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:white}
+.mn-icon{width:36px;height:36px;border-radius:8px;background:rgba(196,30,58,0.12);border:1px solid rgba(196,30,58,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mn-icon svg{width:16px;height:16px;stroke:#C41E3A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mn-chevron{width:15px;height:15px;stroke:rgba(255,255,255,0.2);fill:none;stroke-width:2.5;flex-shrink:0;transition:transform 0.25s,stroke 0.25s;stroke-linecap:round;stroke-linejoin:round}
+.mn-has-sub.mn-sub-open .mn-chevron{transform:rotate(90deg);stroke:#C9A84C}
+.mn-sub{max-height:0;overflow:hidden;transition:max-height 0.38s ease;background:rgba(0,0,0,0.25)}
+.mn-sub.mn-sub-open{max-height:600px}
+.mn-sub-item{display:flex;align-items:center;gap:10px;padding:12px 18px 12px 67px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.03);transition:color 0.15s,background 0.15s;-webkit-tap-highlight-color:transparent;font-family:'Inter',sans-serif}
+.mn-sub-item:last-child{border-bottom:none}
+.mn-sub-item:hover,.mn-sub-item:active{color:#C9A84C;background:rgba(201,168,76,0.05)}
+.mn-sub-emoji{font-size:14px;flex-shrink:0;width:20px;text-align:center}
+.mn-ctas{padding:14px 14px 10px;display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(255,255,255,0.07);flex-shrink:0;background:#0c0c0c}
+.mn-cta{display:flex;align-items:center;justify-content:center;gap:9px;padding:13px 16px;border-radius:8px;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;text-decoration:none;transition:all 0.18s;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;width:100%;box-sizing:border-box}
+.mn-cta svg{width:16px;height:16px;flex-shrink:0}
+.mn-cta-call{background:#C41E3A;color:white}
+.mn-cta-call:hover{background:#960018}
+.mn-cta-wa{background:#25D366;color:white}
+.mn-cta-wa:hover{background:#1da851}
+.mn-cta-est{background:rgba(201,168,76,0.1);color:#C9A84C;border:1px solid rgba(201,168,76,0.22)!important}
+.mn-cta-est:hover{background:rgba(201,168,76,0.18)}
+.mn-footer-note{padding:10px 18px 20px;text-align:center;font-size:10px;color:rgba(255,255,255,0.15);letter-spacing:1.5px;font-family:'Oswald',sans-serif;text-transform:uppercase;flex-shrink:0;background:#0c0c0c}
+.hamburger{transition:all 0.3s}
+.hamburger.mn-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.mn-open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.mn-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:640px){.nav-links{display:none!important}}
+@media(min-width:641px){#mn-overlay,#mn-drawer{display:none!important}}
+</style>
 </head>
 <body>
 
@@ -42,6 +86,69 @@
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
+<div id="mn-overlay" onclick="toggleMenu()"></div>
+<div id="mn-drawer">
+  <div class="mn-head">
+    <a href="index.html"><img src="images/logo-new.png" alt="Caballero Construction" class="mn-logo"></a>
+    <button class="mn-close" onclick="toggleMenu()" aria-label="Close menu"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="mn-nav">
+    <div class="mn-item mn-has-sub" onclick="mnToggleSub(this)">
+      <div class="mn-item-left">
+        <span class="mn-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span>
+        <span class="mn-label">Services</span>
+      </div>
+      <svg class="mn-chevron" viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+    </div>
+    <div class="mn-sub">
+      <a href="services/kitchen-remodeling.html" class="mn-sub-item"><span class="mn-sub-emoji">🍳</span>Kitchen Remodeling</a>
+      <a href="services/bathroom-remodeling.html" class="mn-sub-item"><span class="mn-sub-emoji">🚿</span>Bathroom Remodeling</a>
+      <a href="services/flooring.html" class="mn-sub-item"><span class="mn-sub-emoji">🪵</span>Flooring</a>
+      <a href="services/drywall-framing.html" class="mn-sub-item"><span class="mn-sub-emoji">🧱</span>Drywall &amp; Framing</a>
+      <a href="services/painting.html" class="mn-sub-item"><span class="mn-sub-emoji">🎨</span>Painting</a>
+      <a href="services/roofing.html" class="mn-sub-item"><span class="mn-sub-emoji">🏠</span>Roofing</a>
+      <a href="services/plumbing.html" class="mn-sub-item"><span class="mn-sub-emoji">🔧</span>Plumbing</a>
+      <a href="services/electrical.html" class="mn-sub-item"><span class="mn-sub-emoji">⚡</span>Electrical Work</a>
+      <a href="services/doors-windows.html" class="mn-sub-item"><span class="mn-sub-emoji">🚪</span>Doors &amp; Windows</a>
+      <a href="services/concrete-masonry.html" class="mn-sub-item"><span class="mn-sub-emoji">🏗️</span>Concrete &amp; Masonry</a>
+    </div>
+    <a href="portafolio.html" class="mn-item">
+      <div class="mn-item-left">
+        <span class="mn-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+        <span class="mn-label">Our Work</span>
+      </div>
+      <svg class="mn-chevron" viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+    </a>
+    <a href="blog.html" class="mn-item">
+      <div class="mn-item-left">
+        <span class="mn-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+        <span class="mn-label">Blog</span>
+      </div>
+      <svg class="mn-chevron" viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+    </a>
+    <a href="index.html#reviews" class="mn-item">
+      <div class="mn-item-left">
+        <span class="mn-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span>
+        <span class="mn-label">Reviews</span>
+      </div>
+      <svg class="mn-chevron" viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+    </a>
+    <a href="index.html#areas" class="mn-item">
+      <div class="mn-item-left">
+        <span class="mn-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span class="mn-label">Service Areas</span>
+      </div>
+      <svg class="mn-chevron" viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+    </a>
+  </div>
+  <div class="mn-ctas">
+    <a href="tel:5623946813" class="mn-cta mn-cta-call"><svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.77 19.79 19.79 0 01.22 1.16 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call (562) 394-6813</a>
+    <a href="https://wa.me/15623946813?text=Hi!%20I%27d%20like%20more%20info%20about%20Caballero%20Construction." target="_blank" class="mn-cta mn-cta-wa"><svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.556 4.122 1.526 5.855L.057 23.944l6.265-1.644A11.938 11.938 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.006-1.372l-.358-.214-3.717.975.99-3.617-.234-.372A9.8 9.8 0 012.182 12C2.182 6.573 6.573 2.182 12 2.182 17.427 2.182 21.818 6.573 21.818 12c0 5.427-4.39 9.818-9.818 9.818z"/></svg>WhatsApp</a>
+    <button onclick="if(typeof openEstimator!=='undefined')openEstimator()" class="mn-cta mn-cta-est"><svg viewBox="0 0 24 24" stroke="#C9A84C" fill="none" stroke-width="2.5"><path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3"/><path d="M9 15h3l8.5-8.5a1.5 1.5 0 00-3-3L9 12v3z"/></svg>Cotización Gratis</button>
+  </div>
+  <div class="mn-footer-note">Licensed &amp; Insured · Riverside, CA</div>
+</div>
+
 
 <section class="blog-hero">
   <div class="blog-hero-stripe"></div>
@@ -261,13 +368,7 @@
   AOS.init({duration:700,once:true,offset:80});
   var navbar=document.getElementById('navbar');
   window.addEventListener('scroll',function(){navbar.classList.toggle('scrolled',window.scrollY>60)});
-  function toggleMenu(){
-    var nl=document.getElementById('navLinks');
-    var isOpen=nl.classList.contains('open');
-    if(!isOpen){
-      nl.classList.add('open');
-      if(!document.body.contains(nl)||nl.parentElement!==document.body)document.body.appendChild(nl);
-    }else{
+  function toggleMenu(){var d=document.getElementById('mn-drawer'),o=document.getElementById('mn-overlay'),h=document.querySelector('.hamburger'),op=d.classList.contains('mn-open');d.classList.toggle('mn-open',!op);o.classList.toggle('mn-open',!op);if(h)h.classList.toggle('mn-open',!op);document.body.style.overflow=op?'':'hidden';}function mnToggleSub(el){el.classList.toggle('mn-sub-open');var s=el.nextElementSibling;if(s)s.classList.toggle('mn-sub-open');}else{
       nl.classList.remove('open');
       document.querySelectorAll('.nav-dropdown').forEach(function(d){d.classList.remove('open')});
     }
