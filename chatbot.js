@@ -172,7 +172,7 @@
   var ACTIONS = [
     { type:'call', label:'Call (562) 394-6813', cls:'cb-action-call', href:PHONE, icon:'<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.7 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>' },
     { type:'wa',   label:'WhatsApp Us', cls:'cb-action-wa', href:WA, target:'_blank', icon:'<path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>' },
-    { type:'est',  label:'Request Free Estimate', cls:'cb-action-estimate', href:ESTIMATE, icon:'<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>' }
+    { type:'est',  label:'Calcular Estimado Gratis', cls:'cb-action-estimate', onclick:'openEstimator', icon:'<path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3"/><path d="M9 15h3l8.5-8.5a1.5 1.5 0 00-3-3L9 12v3z"/>' }
   ];
 
   var FAQS = [
@@ -367,10 +367,18 @@
     var div = document.createElement('div');
     div.className = 'cb-actions';
     ACTIONS.forEach(function(a){
-      var el = document.createElement('a');
-      el.className = 'cb-action '+a.cls;
-      el.href = a.href;
-      if(a.target) el.target = a.target;
+      var el;
+      if(a.onclick){
+        el = document.createElement('button');
+        el.className = 'cb-action '+a.cls;
+        el.style.width='100%';
+        el.onclick = function(){ if(window[a.onclick]) window[a.onclick](); };
+      } else {
+        el = document.createElement('a');
+        el.className = 'cb-action '+a.cls;
+        el.href = a.href;
+        if(a.target) el.target = a.target;
+      }
       el.innerHTML = '<svg viewBox="0 0 24 24">'+a.icon+'</svg>'+a.label;
       div.appendChild(el);
     });
