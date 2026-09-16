@@ -464,28 +464,45 @@
 
     .service-card {
       background: var(--white);
-      padding: 36px 28px;
-      border-radius: 4px;
+      padding: 0;
+      border-radius: 8px;
       border-bottom: 3px solid transparent;
       box-shadow: 0 2px 20px rgba(0,0,0,0.06);
       transition: all 0.35s ease;
-      cursor: default;
+      overflow: hidden;
     }
 
     .service-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.14);
       border-bottom-color: var(--red);
     }
 
+    .svc-card-img {
+      height: 175px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.55s ease;
+      position: relative;
+    }
+    .svc-card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.38) 100%);
+    }
+    .service-card:hover .svc-card-img { transform: scale(1.07); }
+
+    .svc-card-body { padding: 24px 24px 20px; }
+
     .service-icon-wrap {
-      width: 64px; height: 64px;
+      width: 52px; height: 52px;
       background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       transition: transform 0.3s ease;
     }
 
@@ -1512,93 +1529,103 @@
     <div class="services-grid">
 
       <a class="service-card" href="services/kitchen-remodeling.html" data-aos="fade-up" data-aos-delay="0" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/project-6.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div>
+          <h3>Kitchen Remodeling</h3>
+          <p>Complete kitchen transformations including cabinets, countertops, islands, plumbing, and electrical. We bring your dream kitchen to life.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Kitchen Remodeling</h3>
-        <p>Complete kitchen transformations including cabinets, countertops, islands, plumbing, and electrical. We bring your dream kitchen to life.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
       <a class="service-card" href="services/bathroom-remodeling.html" data-aos="fade-up" data-aos-delay="60" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M5 12H3a2 2 0 00-2 2v4a2 2 0 002 2h18a2 2 0 002-2v-4a2 2 0 00-2-2h-2M9 5l3-3 3 3M12 2v10"/><rect x="7" y="12" width="10" height="8"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/project-2.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M5 12H3a2 2 0 00-2 2v4a2 2 0 002 2h18a2 2 0 002-2v-4a2 2 0 00-2-2h-2M9 5l3-3 3 3M12 2v10"/><rect x="7" y="12" width="10" height="8"/></svg></div>
+          <h3>Bathroom Remodeling</h3>
+          <p>Luxury bathroom upgrades — shower installations, vanities, tile work, flooring, and fixtures that exceed your expectations every time.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Bathroom Remodeling</h3>
-        <p>Luxury bathroom upgrades — shower installations, vanities, tile work, flooring, and fixtures that exceed your expectations every time.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
       <a class="service-card" href="services/drywall-framing.html" data-aos="fade-up" data-aos-delay="120" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="1"/><path d="M2 9h20M9 3v18"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/project-14.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="1"/><path d="M2 9h20M9 3v18"/></svg></div>
+          <h3>Drywall & Framing</h3>
+          <p>Professional drywall installation, repair, and texturing. Wall framing for additions and room modifications built to code.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Drywall & Framing</h3>
-        <p>Professional drywall installation, repair, and texturing. Wall framing for additions and room modifications built to code.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
       <a class="service-card" href="services/flooring.html" data-aos="fade-up" data-aos-delay="180" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/project-3.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg></div>
+          <h3>Flooring</h3>
+          <p>Hardwood, laminate, LVT, tile, and vinyl. We install and finish all types of flooring with expert precision and lasting results.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Flooring</h3>
-        <p>Hardwood, laminate, LVT, tile, and vinyl. We install and finish all types of flooring with expert precision and lasting results.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
       <a class="service-card" href="services/plumbing.html" data-aos="fade-up" data-aos-delay="240" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/project-9.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          <h3>Plumbing</h3>
+          <p>Installations, repairs, and replacements. Garbage disposals, faucets, water heaters, pipes — licensed plumbing work done right.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Plumbing</h3>
-        <p>Installations, repairs, and replacements. Garbage disposals, faucets, water heaters, pipes — licensed plumbing work done right.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
       <a class="service-card" href="services/electrical.html" data-aos="fade-up" data-aos-delay="300" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/project-8.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3>Electrical Work</h3>
+          <p>Panel upgrades, outlet installation, lighting fixtures, ceiling fans, and code-compliant electrical work for residential and commercial.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Electrical Work</h3>
-        <p>Panel upgrades, outlet installation, lighting fixtures, ceiling fans, and code-compliant electrical work for residential and commercial.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
       <a class="service-card" href="services/roofing.html" data-aos="fade-up" data-aos-delay="360" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 10s8 12 8 12 8-8 8-12S16 2 12 2z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/project-15.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 10s8 12 8 12 8-8 8-12S16 2 12 2z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Roofing</h3>
+          <p>Roof repair, replacement, and inspection services. We protect your home with quality materials and expert installation.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Roofing</h3>
-        <p>Roof repair, replacement, and inspection services. We protect your home with quality materials and expert installation.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
       <a class="service-card" href="services/painting.html" data-aos="fade-up" data-aos-delay="420" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/project-5.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+          <h3>Painting</h3>
+          <p>Interior and exterior painting with premium paints. Clean, precise work that transforms any space with the perfect finish.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Painting</h3>
-        <p>Interior and exterior painting with premium paints. Clean, precise work that transforms any space with the perfect finish.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
       <a class="service-card" href="services/doors-windows.html" data-aos="fade-up" data-aos-delay="480" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m10 0h3a2 2 0 002-2v-3"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/project-4.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m10 0h3a2 2 0 002-2v-3"/></svg></div>
+          <h3>Doors & Windows</h3>
+          <p>Installation and replacement of interior and exterior doors, windows, frames, and hardware. Energy-efficient upgrades available.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Doors & Windows</h3>
-        <p>Installation and replacement of interior and exterior doors, windows, frames, and hardware. Energy-efficient upgrades available.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
       <a class="service-card" href="services/concrete-masonry.html" data-aos="fade-up" data-aos-delay="540" style="text-decoration:none;color:inherit;display:block">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <div class="svc-card-img" style="background-image:url('images/concreto-1.jpg')"></div>
+        <div class="svc-card-body">
+          <div class="service-icon-wrap"><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+          <h3>Concrete & Masonry</h3>
+          <p>Driveways, patios, walkways, retaining walls, and foundation work. Durable concrete solutions for indoor and outdoor projects.</p>
+          <span class="service-link">Learn More →</span>
         </div>
-        <h3>Concrete & Masonry</h3>
-        <p>Driveways, patios, walkways, retaining walls, and foundation work. Durable concrete solutions for indoor and outdoor projects.</p>
-        <span class="service-link">Learn More →</span>
       </a>
 
     </div>
